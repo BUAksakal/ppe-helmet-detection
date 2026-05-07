@@ -2,9 +2,7 @@
 
 <div align="center">
 
-<img src="https://www.th-deg.de/++theme++thdeg.theme/images/logo.svg" height="60" alt="TH Deggendorf"/>
-
-&nbsp;&nbsp;&nbsp;
+<img src="assets/thd_logo.png" height="60" alt="TH Deggendorf"/>
 
 **TH Deggendorf · MSS-M-2 · Machine Learning & Deep Learning · SS26**
 
@@ -126,14 +124,16 @@ results[0].show()
 
 ```
 ppe-helmet-detection/
-├── data/               # Dataset (Roboflow export)
+├── assets/
+│   └── thd_logo.png        # TH Deggendorf logo
+├── data/                   # Dataset (Roboflow export)
 │   ├── train/
 │   ├── valid/
 │   └── test/
-├── runs/               # Training outputs & weights
-├── train.py            # Training script
-├── detect.py           # Inference script
-├── data.yaml           # Dataset config
+├── runs/                   # Training outputs & weights
+├── train.py                # Training script
+├── detect.py               # Inference script
+├── data.yaml               # Dataset config
 └── README.md
 ```
 
@@ -178,7 +178,7 @@ model.train(
 
 <div align="center">
 
-<img src="https://www.th-deg.de/++theme++thdeg.theme/images/logo.svg" height="40" alt="TH Deggendorf"/>
+<img src="assets/thd_logo.png" height="40" alt="TH Deggendorf"/>
 
 *Made with ❤️ for safer workplaces through AI*  
 **TH Deggendorf · MSS-M-2 · SS26**
