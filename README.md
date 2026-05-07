@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="assets/thd_logo.png" height="60" alt="TH Deggendorf"/>
+<img src="assets/thd_logo.png" height="120" alt="TH Deggendorf"/>
 
 **TH Deggendorf · MSS-M-2 · Machine Learning & Deep Learning · SS26**
 
