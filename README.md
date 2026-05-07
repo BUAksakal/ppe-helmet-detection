@@ -2,10 +2,19 @@
 
 <div align="center">
 
+<img src="https://www.th-deg.de/++theme++thdeg.theme/images/logo.svg" height="60" alt="TH Deggendorf"/>
+
+&nbsp;&nbsp;&nbsp;
+
+**TH Deggendorf · MSS-M-2 · Machine Learning & Deep Learning · SS26**
+
+---
+
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![YOLOv11](https://img.shields.io/badge/YOLOv11-Ultralytics-FF6B6B?style=for-the-badge&logo=pytorch&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
 ![Roboflow](https://img.shields.io/badge/Roboflow-Dataset-A78BFA?style=for-the-badge)
+![TH Deggendorf](https://img.shields.io/badge/TH_Deggendorf-SS26-003366?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)
 
 **Real-time safety helmet detection system using deep learning and computer vision.**  
@@ -21,11 +30,15 @@ Detects PPE compliance violations on construction sites via live camera feed.
 
 This project implements an end-to-end **Personal Protective Equipment (PPE) detection pipeline** that automatically identifies whether workers on construction sites are wearing safety helmets in real time.
 
-Built as a **Machine Learning & Deep Learning Case Study** at TH Deggendorf (SS26), the system processes live CCTV feeds at 25+ FPS and raises alerts on compliance violations — eliminating the need for manual safety inspections.
+Built as a **Machine Learning & Deep Learning Case Study** at **TH Deggendorf (SS26)**, the system processes live CCTV feeds at 25+ FPS and raises alerts on compliance violations — eliminating the need for manual safety inspections.
 
 ```
 Input: Live camera / video  →  YOLOv11  →  helmet ✅ / no_helmet ❌  →  Alert
 ```
+
+> 📍 **Institution:** Technische Hochschule Deggendorf  
+> 📚 **Course:** Case Study Machine Learning & Deep Learning  
+> 👥 **Group:** MSS-M-2 · Summer Semester 2026
 
 ---
 
@@ -150,7 +163,7 @@ model.train(
 - [ ] Model training (YOLOv11s)
 - [ ] Evaluation & metrics
 - [ ] Live demo video
-- [ ] Final presentation
+- [ ] Final presentation (July 2026)
 
 ---
 
@@ -163,13 +176,11 @@ model.train(
 
 ---
 
-## Academic Context
-
-> **TH Deggendorf** · MSS-M-2 · Case Study: Machine Learning & Deep Learning · SS26  
-> Group Project · Pitch: April 2026 · Final Presentation: July 2026
-
----
-
 <div align="center">
-Made with ❤️ for safer workplaces through AI
+
+<img src="https://www.th-deg.de/++theme++thdeg.theme/images/logo.svg" height="40" alt="TH Deggendorf"/>
+
+*Made with ❤️ for safer workplaces through AI*  
+**TH Deggendorf · MSS-M-2 · SS26**
+
 </div>
