@@ -1,3 +1,4 @@
+
 # 🦺 PPE Helmet Detection
 
 <div align="center">
@@ -45,6 +46,7 @@ Live Camera / Video  →  YOLOv8s  →  Helmet ✅ / No_Helmet ❌  →  Violati
 > HelmGuard desktop application — real-time helmet compliance monitoring via webcam.
 
 
+<img width="640" height="416" alt="demo" src="https://github.com/user-attachments/assets/47aacd50-89f1-4fb2-861c-adc648bdc201" />
 
 
 *HelmGuard detects violations in real time, displaying live metrics and instant alerts.*
