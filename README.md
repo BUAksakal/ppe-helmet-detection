@@ -69,20 +69,19 @@ Live Camera / Video  →  YOLOv8s  →  Helmet ✅ / No_Helmet ❌  →  Violati
 | **All** | **203** | **643** | **88.6%** | **82.2%** | **84.3%** | **47.2%** |
 
 ### Training Curves
-
-![Training Results](assets/results.png)
+<img width="2400" height="1200" alt="result" src="https://github.com/user-attachments/assets/c3abd226-6a96-46c3-9bbc-91c4e511f47e" />
 
 *Loss curves (box, cls, dfl) and metric progression over 25 epochs on Tesla T4 GPU.*
 
 ### Confusion Matrix
 
-![Confusion Matrix](assets/confusion_matrix.png)
+<img width="3000" height="2250" alt="confusion_matrix" src="https://github.com/user-attachments/assets/e9273859-9f3a-4f6f-ba1a-27da05434093" />
 
 *506 correct Helmet detections · 76 correct No_Helmet detections · 37 Helmet false positives from background.*
 
 ### Detection Examples
 
-![Detection Examples](assets/predictions.jpeg)
+<img width="1920" height="1920" alt="result2" src="https://github.com/user-attachments/assets/10253b48-250a-4026-9b44-43f4ae5dc016" />
 
 *Model predictions on test set — bounding boxes with confidence scores across diverse construction environments.*
 
