@@ -46,9 +46,6 @@ Live Camera / Video  →  YOLOv8s  →  Helmet ✅ / No_Helmet ❌  →  Violati
 
 
 
-https://github.com/user-attachments/assets/1e926818-038f-4e62-a44e-11fbf3d2e24a
-
-
 
 *HelmGuard detects violations in real time, displaying live metrics and instant alerts.*
 
