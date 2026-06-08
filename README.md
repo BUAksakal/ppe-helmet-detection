@@ -1,4 +1,3 @@
-
 # 🦺 PPE Helmet Detection
 
 <div align="center">
@@ -19,7 +18,7 @@
 **Real-time safety helmet detection system using deep learning and computer vision.**  
 Detects PPE compliance violations on construction sites via live camera feed.
 
-[Results](#results) · [Dataset](#dataset) · [Training](#training) · [Demo](#demo) · [Installation](#installation)
+[Results](#results) · [Dataset](#dataset) · [Training](#training) · [Architecture Comparison](#architecture-comparison) · [Demo](#demo) · [Installation](#installation)
 
 </div>
 
@@ -171,6 +170,50 @@ model.train(
 
 ---
 
+## Architecture Comparison
+
+To scientifically justify our model selection, we trained a **Faster R-CNN (ResNet-50 FPN)** benchmark on the identical dataset and compared it against YOLOv8s under controlled, reproducible conditions.
+
+### Dataset Rebalancing
+
+The original test split (~3%) was too small for statistically reliable evaluation. We rebalanced to an **80 / 10 / 10** split, yielding 117 test images evaluated identically for both models. A fixed `random.seed(42)` ensures reproducibility.
+
+### Faster R-CNN Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Backbone | ResNet-50 FPN |
+| Pretrained weights | COCO (fine-tuned) |
+| Epochs | 10 |
+| Optimizer | SGD (lr=0.005, momentum=0.9, weight_decay=0.0005) |
+| GPU | Tesla T4 (Google Colab) |
+
+> **Format conversion:** YOLO-format annotations were converted on-the-fly to COCO format via a custom `PPEYoloDataset` class — no separate preprocessing pipeline. Both models trained on the exact same raw images.
+
+### Comparative Results
+
+| Metric | YOLOv8s (One-Stage) | Faster R-CNN (Two-Stage) |
+|--------|--------------------|-----------------------|
+| mAP@0.5 | **92.80%** | 88.73% |
+| Inference Speed | **103 FPS** | 6.42 FPS |
+| Inference Latency | **~9.7 ms** | ~155.8 ms |
+| Training Epochs | 25 | 10 |
+| Real-Time Suitability | ✅ Excellent | ❌ Limited |
+
+### Why the Difference?
+
+**YOLOv8s (One-Stage):** Detects objects in a single forward pass — bounding boxes and class labels predicted simultaneously. 9.7 ms latency makes it ideal for live edge deployments.
+
+**Faster R-CNN (Two-Stage):** First generates region proposals via an RPN, then classifies each region separately. Mathematically more thorough, but the two-pass overhead results in 155.8 ms latency — **16× slower** than YOLO.
+
+### Conclusion
+
+> 🏆 YOLOv8s is **16× faster** and **4.07 percentage points more accurate** — the clear choice for real-time construction site CCTV monitoring. Faster R-CNN independently validated our dataset quality (both architectures converged on the same labels), but its latency is incompatible with live safety monitoring requirements.
+
+The full training notebook is available in [`faster_rcnn/fasterrcnn_training.ipynb`](faster_rcnn/fasterrcnn_training.ipynb).
+
+---
+
 ## Features
 
 - 🎯 **Real-time detection** at ~145 FPS on consumer GPU
@@ -179,6 +222,7 @@ model.train(
 - 🔔 **Instant violation alerts** for safety supervisors
 - 🖥️ **HelmGuard desktop app** — clean professional GUI (PyQt5)
 - 🔄 **Multi-stage augmentation** (Roboflow + Ultralytics + Albumentations)
+- 🔬 **Architecture comparison study** — YOLOv8s vs. Faster R-CNN
 
 ---
 
@@ -187,6 +231,7 @@ model.train(
 | Component | Technology |
 |-----------|-----------|
 | Object Detection | YOLOv8s (Ultralytics 8.2.103) |
+| Benchmark Model | Faster R-CNN ResNet-50 FPN (torchvision) |
 | Desktop GUI | PyQt5 |
 | Vision Library | OpenCV |
 | Dataset Management | Roboflow |
@@ -199,7 +244,7 @@ model.train(
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ppe-helmet-detection.git
+git clone https://github.com/BUAksakal/ppe-helmet-detection.git
 cd ppe-helmet-detection
 pip install ultralytics opencv-python PyQt5 numpy
 ```
@@ -210,14 +255,14 @@ pip install ultralytics opencv-python PyQt5 numpy
 
 **Run HelmGuard desktop app:**
 ```bash
-python app.py
+python yolov8/app.py
 ```
 
 **Run on webcam (script):**
 ```python
 from ultralytics import YOLO
 
-model = YOLO('best.pt')
+model = YOLO('yolov8/best.pt')
 model.predict(source=0, show=True, conf=0.5)
 ```
 
@@ -225,6 +270,12 @@ model.predict(source=0, show=True, conf=0.5)
 ```python
 results = model.predict(source='worker.jpg', conf=0.5)
 results[0].show()
+```
+
+**Run Faster R-CNN training:**
+```bash
+# Open in Google Colab
+faster_rcnn/fasterrcnn_training.ipynb
 ```
 
 ---
@@ -239,13 +290,14 @@ ppe-helmet-detection/
 │   ├── results.png           # Training curves
 │   ├── predictions.jpeg      # Detection examples
 │   └── demo.png              # App screenshot
-├── data/                     # Dataset (Roboflow export)
-│   ├── train/
-│   ├── valid/
-│   └── test/
-├── runs/                     # Training outputs & weights
-├── app.py                    # HelmGuard desktop application
-├── data.yaml                 # Dataset config
+├── yolov8/
+│   ├── app.py                # HelmGuard desktop application
+│   ├── best.pt               # Trained YOLOv8s weights
+│   └── requirements.txt      # Dependencies
+├── faster_rcnn/
+│   └── fasterrcnn_training.ipynb  # Faster R-CNN training & evaluation
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -259,6 +311,8 @@ ppe-helmet-detection/
 - [x] Model training — YOLOv8s (25 epochs, Tesla T4)
 - [x] Evaluation & metrics (mAP 84.3%, ~145 FPS)
 - [x] HelmGuard desktop application (PyQt5)
+- [x] Architecture comparison — YOLOv8s vs. Faster R-CNN
+- [x] Dataset rebalancing (80/10/10 split)
 - [ ] Live demo video
 - [ ] Final presentation (July 2026)
 
@@ -270,6 +324,7 @@ ppe-helmet-detection/
 - Nath et al. (2020). *Deep learning for site safety: Real-time detection of PPE.* Automation in Construction, 112.
 - Otgonbold et al. (2022). *SHEL5K: An Extended Dataset for Safety Helmet Detection.* Sensors, 22(6).
 - Kumar et al. (2024). *PPE Detection using YOLOv8.* Cogent Engineering, 11(1).
+- Ren et al. (2015). *Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks.* NeurIPS.
 
 ---
 
@@ -277,7 +332,7 @@ ppe-helmet-detection/
 
 <img src="assets/thd_logo.png" height="40" alt="TH Deggendorf"/>
 
-  
+*Made with ❤️ for safer workplaces through AI*  
 **TH Deggendorf · MSS-M-2 · SS26**
 
 </div>
