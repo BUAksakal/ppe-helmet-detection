@@ -303,7 +303,7 @@ ppe-helmet-detection/
 
 <img src="assets/thd_logo.png" height="40" alt="TH Deggendorf"/>
 
-*Made with ❤️ for safer workplaces through AI*  
+ 
 **TH Deggendorf · MSS-M-2 · SS26**
 
 </div>
