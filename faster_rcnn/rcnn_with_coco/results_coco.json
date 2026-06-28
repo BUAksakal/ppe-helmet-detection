@@ -1,0 +1,18 @@
+{
+  "model": "Faster R-CNN (COCO pretrained)",
+  "split": "test",
+  "checkpoint": "checkpoints_coco/best_model.pth",
+  "best_val_map50": 0.8832,
+  "metrics": {
+    "map": 0.4919445514678955,
+    "map_50": 0.8127234578132629,
+    "map_75": 0.5401123762130737,
+    "map_small": 0.4024488925933838,
+    "map_medium": 0.593942403793335,
+    "map_large": 0.5742979049682617
+  },
+  "per_class_ap": {
+    "helmet": 0.5224504470825195,
+    "head": 0.4614386260509491
+  }
+}
