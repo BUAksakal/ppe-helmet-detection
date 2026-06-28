@@ -80,6 +80,7 @@ Three models were trained and evaluated on the same dataset under identical hard
 ### Three-Way Comparison
 
 <img width="3904" height="1094" alt="comparison_final" src="https://github.com/user-attachments/assets/7aa76edc-cc77-475e-a2f5-5223e8995506" />
+
 | Model | Val mAP@0.50 | Test mAP@0.50 | mAP@0.50:0.95 | Helmet AP | No-Helmet AP | FPS |
 |-------|-------------|--------------|---------------|-----------|--------------|-----|
 | **YOLOv8s (w/ COCO)** | **84.4%** | — | **47.4%** | **93.8%** | **75.0%** | **75** |
